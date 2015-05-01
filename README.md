@@ -1,5 +1,12 @@
 # nginx-init-ubuntu #
 
+## Important note
+I modified this script to "automagically" work with Nginx version installed by Phusion passenger web server. More info here: https://www.phusionpassenger.com/documentation/Users%20guide%20Nginx.html
+
+If you have installed Passenger with
+    passenger-install-nginx-module
+
+This version of script will just work.
 
 ## Status
 
