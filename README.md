@@ -1,4 +1,5 @@
-# nginx-init-ubuntu #
+nginx-init-ubuntu
+=================
 
 ## Important note
 I modified this script to "automagically" work with Nginx version installed by Phusion passenger web server. More info here: https://www.phusionpassenger.com/documentation/Users%20guide%20Nginx.html
@@ -12,11 +13,11 @@ This version of script will just work.
 
 [![Build Status](https://travis-ci.org/JasonGiedymin/nginx-init-ubuntu.svg?branch=master)](https://travis-ci.org/JasonGiedymin/nginx-init-ubuntu)
 
-Current release: [v3.8.0](https://github.com/JasonGiedymin/nginx-init-ubuntu/releases/tag/v3.8.0)
+Current release: [v3.9.0](https://github.com/JasonGiedymin/nginx-init-ubuntu/releases/tag/v3.9.0)
 
-Previous stable release [v3.7.0](https://github.com/JasonGiedymin/nginx-init-ubuntu/releases/tag/v3.7.0)
+Previous stable release [v3.8.0](https://github.com/JasonGiedymin/nginx-init-ubuntu/releases/tag/v3.8.0)
 
-Notes: v3.7.0 has been stable for the last several months without issues. v3.8.0 while
+Notes: v3.8.0 has been stable for the last several months without issues. v3.9.0 while
 stable, is new.
 
 ## Info
@@ -63,7 +64,7 @@ Basic install instructions, use sudo if necessary for the below (depends on your
     cd ~/temp/nginx-install
     
     # download/curl/wget nginx 
-    wget http://nginx.org/download/nginx-1.5.9.tar.gz
+    wget http://nginx.org/download/nginx-1.7.9.tar.gz
     tar -xvf nginx-1.7.9.tar.gz
     cd nginx-1.7.9/
     ./configure
@@ -71,7 +72,7 @@ Basic install instructions, use sudo if necessary for the below (depends on your
     sudo make install
     
     #copy/download/curl/wget the init script
-    sudo wget https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx
+    sudo wget https://raw.githubusercontent.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx
     sudo chmod +x /etc/init.d/nginx
     
     service nginx status  # to poll for current status
@@ -90,17 +91,18 @@ If you need to override the values within the script you should use `/etc/defaul
 
 You can override any of these values:
 
-  - PATH
-  - NGINXPATH
-  - DAEMON
-  - PS
-  - PIDNAME
-  - PIDFILE
-  - PIDSPATH
-  - DESCRIPTION
-  - RUNAS
-  - NGINX_CONF_FILE
-
+| Variable        | Function    |
+| ------------- |-------------|
+| PATH | Path environment variable
+| NGINXPATH | Root path where installed
+| DAEMON | Path to Deamon binary
+| PS | Process name
+| PIDNAME | Lets you do $PS-slave
+| PIDFILE | Pid file
+| PIDSPATH | Default PID location
+| DESCRIPTION | Process description
+| RUNAS | User to run as
+| NGINX_CONF_FILE | Config file path
 
 For instance, if you needed to change the description of the server during logging:
 
@@ -151,7 +153,7 @@ If your looking for a more production and developer friendly [Dockerfile, look h
 
 When using the ansible role mentioned above you will need to set `nginx_docker_override` to `True` as the role will detect if running within a Dockerfile. This is to prevent nginx running in `daemon` mode.
 
-A copy of [nginx-init-ubuntu](https://github.com/JasonGiedymin/nginx-init-ubuntu) is present in the [ansible role](https://github.com/AnsibleShipyard/ansible-nginx) role.
+A copy of [nginx-init-ubuntu](https://github.com/JasonGiedymin/nginx-init-ubuntu) is present in the [ansible role](https://github.com/AnsibleShipyard/ansible-nginx).
 
 ## Contributions ##
 _Contributions are welcome!_
